@@ -4,6 +4,7 @@
   "description": "An example project for chariot",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp",
     "watch": "gulp watch",
@@ -15,7 +16,9 @@
   "author": "Jack Lawson <ajacksified@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chariot": "^0.1.1"
+    "chariot": "^0.1.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -43,12 +46,13 @@
     "gulp-livereload": "^3.8.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^7.0.0",
+    "gulp-sequence": "^0.4.5",
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "node-notifier": "^4.5.0",
     "path": "^0.12.7",
-    "snoode": "git://github.com/ajacksified/snoode.git#040555b3a60e53ff1e43758eea8553bd3f190fd7",
+    "snoode": "git://github.com/ajacksified/snoode.git#b53dd0493424df07914742a1e02ccd15b97697df",
     "stream-combiner2": "^1.1.1",
     "streamqueue": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
