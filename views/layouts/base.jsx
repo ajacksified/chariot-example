@@ -7,7 +7,7 @@ export default function BaseLayout (props) {
         <a href='/' className='topnav-logo'>reddit</a>
 
         <div className='pull-right'>
-          { props.context.token ?
+          { props.token ?
             <a href='/logout'>Log Out</a> :
             <form className='pull-right form-inline' action='/login' method='post'>
               <input name='username' placeholder='username' type='text' />
