@@ -481,3 +481,7 @@ th {
 .paging-after {
   float: right;
 }
+
+.pull-right {
+  float: right;
+}

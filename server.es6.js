@@ -8,6 +8,9 @@ import { MIDDLEWARE_MAP as MIDDLEWARE } from 'chariot/src/server';
 // from environment variables.
 import config from './config';
 
+// Import custom middleware
+import snoodeMiddleware from './lib/snoodeMiddleware';
+
 // TODO autoload manifest from build process
 config.manifest = {
   'base.css': 'base.css',
@@ -18,8 +21,6 @@ config.manifest = {
 import routes from './routes';
 import serverRoutes from './serverRoutes';
 
-import Snoode from 'snoode';
-
 const keys = process.env.SECRET_KEYS || 'tomato,tomahto';
 
 // Config is shared server/client; mix in  server-specific config here.
@@ -27,6 +28,9 @@ const serverConfig = {
   processes: process.env.PROCESSES || 1,
   keys: keys.split(','),
   port: process.env.PORT || 4444,
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  oauthAppOrigin: process.env.OAUTH_APP_ORIGIN,
 };
 
 // Enable koa middleware with options. See MIDDLEWARE.md for list of available
@@ -36,6 +40,7 @@ const serverConfig = {
 // so if you want to run something post-render, do so after awaiting.
 
 serverConfig.middleware = [
+  MIDDLEWARE.body(),
   MIDDLEWARE.staticFiles(`${__dirname}/build`),
   MIDDLEWARE.staticFiles(`${__dirname}/public`),
   MIDDLEWARE.requestGUID(),
@@ -57,16 +62,10 @@ const sessionOptions = {};
 // responded to.
 chariot.enableMiddleware(async (ctx, next) => {
   ctx.set('x-guid', ctx.guid);
-  await next();
+  return await next();
 });
 
-chariot.enableMiddleware(async (ctx, next) => {
-  ctx.api = new Snoode({
-    debugLevel: 'info',
-  });
-
-  await next();
-});
+chariot.enableMiddleware(snoodeMiddleware(serverConfig));
 
 // Load in url routes
 chariot.loadRoutes(routes);

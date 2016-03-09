@@ -16,9 +16,10 @@
   "author": "Jack Lawson <ajacksified@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chariot": "^0.1.2",
+    "chariot": "^0.2.1",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "snoode": "git://github.com/ajacksified/snoode.git#ddf9b1b370084f2dea0e6016ed1b7165fe10a4c7"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -53,7 +54,6 @@
     "gulp-util": "^3.0.7",
     "node-notifier": "^4.5.0",
     "path": "^0.12.7",
-    "snoode": "git://github.com/ajacksified/snoode.git#b53dd0493424df07914742a1e02ccd15b97697df",
     "stream-combiner2": "^1.1.1",
     "streamqueue": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
