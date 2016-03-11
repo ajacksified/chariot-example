@@ -1,6 +1,6 @@
 {
   "name": "chariot-example",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An example project for chariot",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "Jack Lawson <ajacksified@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chariot": "^0.2.1",
+    "chariot": "^0.3.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "snoode": "git://github.com/ajacksified/snoode.git#ddf9b1b370084f2dea0e6016ed1b7165fe10a4c7"

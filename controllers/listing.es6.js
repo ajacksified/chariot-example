@@ -44,7 +44,7 @@ class Listing extends BaseController {
     const link = this.dataCache('link');
 
     if (link) {
-      this.ctx.props.title = link.title;
+      this.props.title = link.title;
     }
   }
 }

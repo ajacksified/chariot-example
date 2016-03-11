@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DefaultLayout (props) {
+export default function DefaultLayout (props, context) {
   const { config } = props;
   const { manifest } = config;
 
@@ -20,6 +20,7 @@ export default function DefaultLayout (props) {
       <head>
         <title>{ props.title }</title>
         <link href={ css } rel='stylesheet' />
+        <meta id='csrf-token-meta-tag' name='csrf-token' content={ context.ctx.csrf }/>
       </head>
       <body>
         <div id='app-container'>
@@ -31,3 +32,7 @@ export default function DefaultLayout (props) {
     </html>
   );
 }
+
+DefaultLayout.contextTypes = {
+  ctx: React.PropTypes.object,
+};

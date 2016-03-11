@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BaseLayout (props) {
+export default function BaseLayout (props, context) {
   return (
     <div>
       <div className='topnav'>
@@ -12,7 +12,7 @@ export default function BaseLayout (props) {
             <form className='pull-right form-inline' action='/login' method='post'>
               <input name='username' placeholder='username' type='text' />
               <input name='password' placeholder='password' type='password' />
-              <input name='_csrf' value={ props.context.csrf } type='hidden' readOnly={ true } />
+              <input name='_csrf' value={ context.ctx.csrf } type='hidden' readOnly={ true } />
               <button type='submit'>Log In</button>
             </form>
           }
@@ -23,3 +23,7 @@ export default function BaseLayout (props) {
     </div>
   );
 }
+
+BaseLayout.contextTypes = {
+  ctx: React.PropTypes.object,
+};

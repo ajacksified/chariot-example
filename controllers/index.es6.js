@@ -1,7 +1,6 @@
 import BaseController from './base';
 
 import IndexPage from '../views/pages/indexPage';
-import WrappedPromise from 'chariot/src/wrappedPromise';
 
 class Index extends BaseController {
   page = IndexPage;
@@ -10,7 +9,7 @@ class Index extends BaseController {
     super(ctx, app);
 
     const sub = ctx.params.subredditName;
-    ctx.props.title = sub ? `r/${sub}` : 'reddit';
+    this.props.title = sub ? `r/${sub}` : 'reddit';
   }
 
   get data () {
@@ -25,10 +24,6 @@ class Index extends BaseController {
       subredditName,
     };
 
-    /*
-    const links = new WrappedPromise(() => api.links.get(linkGetParams))
-                      .preCall(() => [{ title: 'test' }]);
-    */
     const links = () => api.links.get(linkGetParams);
 
     const data = { links };

@@ -3,7 +3,7 @@ import React from 'react';
 import Listing from '../components/listing';
 import Paging from '../components/paging';
 
-export default function IndexPage (props) {
+export default function IndexPage (props, context) {
   const subredditName = props.data.subreddit ? props.data.subreddit.display_name : '';
 
   if (props.data.links) {
@@ -16,8 +16,8 @@ export default function IndexPage (props) {
 
         <Paging
           listings={ props.data.links }
-          baseUrl={ props.context.path }
-          query={ props.context.query }
+          baseUrl={ context.ctx.path }
+          query={ context.ctx.query }
         />
       </div>
     );
@@ -29,3 +29,7 @@ export default function IndexPage (props) {
     </div>
   );
 }
+
+IndexPage.contextTypes = {
+  ctx: React.PropTypes.object,
+};
