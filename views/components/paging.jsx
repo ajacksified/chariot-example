@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import querystring from 'querystring';
 
-export default function Paging (props) {
+export function Paging (props) {
   if (!props.listings || !props.listings.length) { return (<ul />); }
   const {
     listings,
@@ -57,3 +59,5 @@ export default function Paging (props) {
     </ul>
   );
 }
+
+export default connect(state=>state)(Paging);

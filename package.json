@@ -19,6 +19,8 @@
     "chariot": "^0.3.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-redux": "^4.4.1",
+    "redux": "^3.3.1",
     "snoode": "git://github.com/ajacksified/snoode.git#ddf9b1b370084f2dea0e6016ed1b7165fe10a4c7"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function Listing (props) {
+export function Listing (props) {
   const { listing } = props;
 
   return (
@@ -25,3 +26,5 @@ export default function Listing (props) {
     </article>
   );
 }
+
+export default connect(state=>state)(Listing);

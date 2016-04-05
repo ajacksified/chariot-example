@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Listing from '../components/listing';
 import Comment from '../components/comment';
 
-export default function IndexPage (props) {
+export function ListingPage (props) {
   if (props.data.comments && props.data.link) {
     return (
       <div>
         <Listing listing={ props.data.link } showSubreddit={ true } />
-        { props.data.comments.map(c => <Comment comment={ c } key={ c.id } />) }
+        { props.data.comments.body.map(c => <Comment comment={ c } key={ c.id } />) }
       </div>
     );
   }
@@ -19,3 +20,5 @@ export default function IndexPage (props) {
     </div>
   );
 }
+
+export default connect(state=>state)(ListingPage);

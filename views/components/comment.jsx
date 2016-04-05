@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function Comment (props) {
+export function Comment (props) {
   const commentScoreClass = props.comment.score > 0 ? 'comment-positive' : 'comment-negative';
 
   return (
@@ -18,3 +19,5 @@ export default function Comment (props) {
     </ul>
   );
 }
+
+export default connect(state=>state)(Comment);

@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function DefaultLayout (props, context) {
+function DefaultLayout (props) {
+  console.log('default layout');
   const { config } = props;
   const { manifest } = config;
 
@@ -20,7 +22,7 @@ export default function DefaultLayout (props, context) {
       <head>
         <title>{ props.title }</title>
         <link href={ css } rel='stylesheet' />
-        <meta id='csrf-token-meta-tag' name='csrf-token' content={ context.ctx.csrf }/>
+        <meta id='csrf-token-meta-tag' name='csrf-token' content={ props.csrf }/>
       </head>
       <body>
         <div id='app-container'>
@@ -33,6 +35,4 @@ export default function DefaultLayout (props, context) {
   );
 }
 
-DefaultLayout.contextTypes = {
-  ctx: React.PropTypes.object,
-};
+export default connect(state => state)(DefaultLayout);

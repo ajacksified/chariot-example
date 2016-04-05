@@ -6,7 +6,7 @@ export default function routes (app) {
 
   router.use(async (ctx, next) => {
     // Has to be a let, or the compiler barfs when creating a Buffer
-    let tokenString = ctx.cookies.get('token');
+    const tokenString = ctx.cookies.get('token');
 
     if (tokenString) {
       try {

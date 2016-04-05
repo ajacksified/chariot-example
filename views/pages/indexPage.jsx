@@ -1,23 +1,25 @@
 import React from 'react';
+import { pick } from 'lodash/object';
+import { connect } from 'react-redux';
 
 import Listing from '../components/listing';
 import Paging from '../components/paging';
 
-export default function IndexPage (props, context) {
-  const subredditName = props.data.subreddit ? props.data.subreddit.display_name : '';
+export function IndexPage ({ data, path, query }) {
+  const subredditName = data.subreddit ? data.subreddit.display_name : '';
 
-  if (props.data.links) {
+  if (data.links.body) {
     return (
       <div>
         <h1>{ subredditName || 'reddit' }</h1>
-        { props.data.links.map(l =>
+        { data.links.body.map(l =>
           <Listing listing={ l } key={ l.id } showSubreddit={ !subredditName } />)
         }
 
         <Paging
-          listings={ props.data.links }
-          baseUrl={ context.ctx.path }
-          query={ context.ctx.query }
+          listings={ data.links.body }
+          baseUrl={ path }
+          query={ query }
         />
       </div>
     );
@@ -30,6 +32,8 @@ export default function IndexPage (props, context) {
   );
 }
 
-IndexPage.contextTypes = {
-  ctx: React.PropTypes.object,
-};
+export function stateSlicer (state) {
+  return pick(state, ['data', 'query', 'path']);
+}
+
+export default connect(stateSlicer)(IndexPage);
